@@ -1,0 +1,30 @@
+
+
+
+
+
+
+
+
+!pip install dnspython
+!pip install pymongo[srv]
+
+
+
+
+import pymongo
+from pymongo import Mongoclient
+client = pymongo.Mongoclient("mongodb+srv://avikbose584:12345@cluster0.z2mr5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+db = client.student
+records=db.students_data
+
+
+import json
+with open('/students.json') as student:
+  a=[json.loads(s) for s in student]
+  
+a
+
+
+records.insert_many(a)
+
